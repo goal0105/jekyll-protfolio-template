@@ -1,20 +1,12 @@
 languages:
-  - item: JavaScript (ES6)
-  - item: TypeScript
-  - item: HTML
-  - item: CSS/Sass
   - item: Python
-  - item: SQL
-  - item: R
+  - item: JavaScript
+  - item: HTML
+  - item: CSS
+  - item: Bootstrap
 
 frameworks:
-  - item: Ember & Glimmer
-  - item: React
-  - item: Jekyll
-  - item: Node
-  - item: D3
-  - item: Wordpress
-  - item: Timber
+  - item: Bootstrap
 
 tools:
   - item: Bash
