@@ -10,7 +10,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp serve --watch",
-    "build": "jekyll build"
+    "build": "gulp build"
   },
   "author": "Future Man",
   "license": "ISC",
