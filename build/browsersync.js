@@ -19,9 +19,26 @@ module.exports = gulp => {
     done();
   };
 
+  const { exec } = require('child_process');
+
   // run `jekyll build`
+  // gulp.task('jekyll-build', done => {
+  //   return cp.spawn(jekyll, ['build'], { stdio: 'inherit' }).on('close', done);
+    
+  // });
+
   gulp.task('jekyll-build', done => {
-    return cp.spawn(jekyll, ['build'], { stdio: 'inherit' }).on('close', done);
+    exec(
+      `${jekyll} build`, // Command to run Jekyll build
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error: ${stderr}`);
+          return done(error); // Pass the error to Gulp to stop execution
+        }
+        console.log(stdout); // Output the Jekyll build logs
+        done(); // Signal Gulp that the task is complete
+      }
+    );
   });
 
   // run `jekyll build` with _config_dev.yml
@@ -32,8 +49,6 @@ module.exports = gulp => {
   //     })
   //     .on('close', done);
   // });
-
-  const { exec } = require('child_process');
 
   gulp.task('jekyll-dev', done => {
     exec(
@@ -48,7 +63,6 @@ module.exports = gulp => {
         done();
       }
     );
-
   });
 
 
