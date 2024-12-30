@@ -8,12 +8,11 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "./install-jekyll.sh && jekyll build -d dist",
-        "outputDirectory": "dist"
+        "buildCommand": "./install-jekyll.sh && jekyll build"
       }
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/dist/$1" }
+    { "src": "/(.*)", "dest": "/_site/$1" }
   ]
 }
