@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const sass = require('./build/sass');
-// const sass = require('gulp-sass')(require('sass'));
 const scripts = require('./build/scripts');
 const images = require('./build/images');
 const sync = require('./build/browsersync');
