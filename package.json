@@ -27,6 +27,7 @@
     "sass": "^1.83.0"
   },
   "dependencies": {
+    "build": "^0.1.4",
     "jekyll": "^3.0.0-beta1"
   }
 }
