@@ -1,0 +1,18 @@
+{
+  "builds": [
+    {
+      "src": "install-jekyll.sh",
+      "use": "@vercel/static-build"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "./install-jekyll.sh && jekyll build"
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/_site/$1" }
+  ]
+}
