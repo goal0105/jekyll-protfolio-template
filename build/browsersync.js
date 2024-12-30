@@ -1,5 +1,5 @@
 const browserSync = require('browser-sync').create();
-const cp = require('child_process');
+// const cp = require('child_process');
 
 const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
@@ -18,19 +18,39 @@ module.exports = gulp => {
     browserSync.reload();
     done();
   };
+  
   // run `jekyll build`
   gulp.task('jekyll-build', done => {
     return cp.spawn(jekyll, ['build'], { stdio: 'inherit' }).on('close', done);
   });
 
   // run `jekyll build` with _config_dev.yml
+  // gulp.task('jekyll-dev', done => {
+  //   return cp
+  //     .spawn(jekyll, ['build', '--config', '_config.yml,_config_dev.yml'], {
+  //       stdio: 'inherit',
+  //     })
+  //     .on('close', done);
+  // });
+
+  const { exec } = require('child_process');
+
   gulp.task('jekyll-dev', done => {
-    return cp
-      .spawn(jekyll, ['build', '--config', '_config.yml,_config_dev.yml'], {
-        stdio: 'inherit',
-      })
-      .on('close', done);
+    exec(
+      `${jekyll} build --config _config.yml,_config_dev.yml`,
+      { stdio: 'inherit' },
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error: ${stderr}`);
+          return done(error);
+        }
+        console.log(stdout);
+        done();
+      }
+    );
+
   });
+
 
   // Rebuild Jekyll then reload the page
   gulp.task('jekyll-rebuild', gulp.series(['jekyll-dev', reloadBrowser]));

@@ -13,14 +13,8 @@ social:
     url: mailto:ashishsinghxr@gmail.com
   - title: twitter
     url: https://x.com/ashishxsinghh
-  # - title: instagram
-  #   url: https://instagram.com/bchiang7
-  # - title: codepen
-  #   url: http://codepen.io/bchiang7
   - title: github
     url: https://github.com/ashishxsinghh
-  # - title: linkedin
-  #   url: https://www.linkedin.com/in/bchiang7
 
 # Build settings
 markdown: kramdown
