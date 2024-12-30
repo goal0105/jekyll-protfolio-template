@@ -1,5 +1,5 @@
 const browserSync = require('browser-sync').create();
-// const cp = require('child_process');
+const cp = require('child_process');
 
 const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 
@@ -18,7 +18,7 @@ module.exports = gulp => {
     browserSync.reload();
     done();
   };
-  
+
   // run `jekyll build`
   gulp.task('jekyll-build', done => {
     return cp.spawn(jekyll, ['build'], { stdio: 'inherit' }).on('close', done);
